@@ -8,7 +8,7 @@ class model {
     $this->table_name = $table_name;
   }
 
-  function load($id) {
+  function load($id, $multiple = false) {
     if (is_array($id)) {
       if (!count($id)) {
         return (object)array();
@@ -19,13 +19,30 @@ class model {
       {
         $where[] = "`{$key}` = " . db::quote($value);
       }
-      $return = db::fetchRow($sql . implode(' AND ', $where), 'model');
+      if ($multiple) {
+        $return = db::fetchAll($sql . implode(' AND ', $where), 'model');
+      }
+      else {
+        $return = db::fetchRow($sql . implode(' AND ', $where), 'model');
+      }
     }
     else
     {
-      $return = db::fetchRow("SELECT * FROM " . $this->table_name . " WHERE id=" . db::quote($id), 'model');
+      if ($multiple) {
+        $return = db::fetchRow("SELECT * FROM " . $this->table_name . " WHERE id=" . db::quote($id), 'model');
+      }
+      else {
+        $return = db::fetchRow("SELECT * FROM " . $this->table_name . " WHERE id=" . db::quote($id), 'model');
+      }
     }
-    $return->table_name = $this->table_name;
+    if ($multiple) {
+      foreach($return as $delta => $value) {
+        $return[$delta]->table_name = $this->table_name;
+      }
+    }
+    else {
+      $return->table_name = $this->table_name;
+    }
     return $return;
   }
 

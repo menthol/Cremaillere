@@ -8,3 +8,4 @@ require_once BASE_DIRECTORY . '/includes/db.php';
 
 // Load configs
 require_once BASE_DIRECTORY . '/includes/config.php';
+
