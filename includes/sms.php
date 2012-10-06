@@ -14,7 +14,10 @@ class sms {
   public static function send($to, $msg) {
     try {
       if (self::phoneNumberCleaner($to)) {
-        $soap = new SoapClient("https://www.ovh.com/soapi/soapi-re-1.48.wsdl");
+        require 'SOAP/Client.php';
+
+        $WSDL = new SOAP_WSDL('https://www.ovh.com/soapi/soapi-re-1.48.wsdl');
+        $soap = $WSDL->getProxy();
         $soap->telephonySmsUserSend(self::$user, self::$password, self::$account, self::phoneNumberCleaner(self::$sender), self::phoneNumberCleaner($to), $msg, "2160", "1", "0", "3", "2", "", true);
       }
     }
