@@ -40,7 +40,7 @@ $status_strings = array(
         <td><?php echo $guest->name ?></td>
         <td><?php echo $status_strings[$guest->status]; ?></td>
         <?php if (user()->is_admin): ?>
-          <th><?php echo model('guest')->load($guest->inviter_id)->name; ?></th>
+          <td><b><?php echo model('guest')->load($guest->inviter_id)->name; ?></b></td>
         <?php endif; ?>
         <td>
           <?php if (!empty($guest->tel)): ?>
