@@ -110,6 +110,7 @@
     <div class="span4">
         <h2>The Digicode <small><a href="<?php echo $digicode; ?>">Télécharger</a></small></h2>
         <p>Si possible, essayez de rapporter ce digicode en l’imprimant ou en l’enregistrant sur votre appareil mobile.</p>
+        <p>Si vous avez un smartphone et le sms, vous n'avez pas besoin d'apporter le digicode.</p>
         <p>Ce digicode nous permettra de vérifier plus simplement les invités et éviter ainsi toute intrusion qui nuira au déroulement de l’évènement.</p>
         <img src="<?php echo $digicode ?>" />
     </div>
