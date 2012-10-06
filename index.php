@@ -4,6 +4,7 @@ session_start();
 define('BASE_DIRECTORY', __DIR__);
 
 // Load libraries
+require_once BASE_DIRECTORY . '/includes/functions.php';
 require_once BASE_DIRECTORY . '/includes/db.php';
 require_once BASE_DIRECTORY . '/includes/controllers/errors.php';
 require_once BASE_DIRECTORY . '/includes/view.php';
@@ -11,6 +12,7 @@ require_once BASE_DIRECTORY . '/includes/view.php';
 // Load configs
 require_once BASE_DIRECTORY . '/includes/config.php';
 
+// Execute page.
 $controller = null;
 
 $args = array();
@@ -22,7 +24,14 @@ else {
   $controller = array_shift($args);
 }
 
-if ($controller && file_exists(BASE_DIRECTORY . '/includes/controllers/' . $controller . '.php')) {
+if (
+  $controller
+  && file_exists(BASE_DIRECTORY . '/includes/controllers/' . $controller . '.php')
+  && (
+    $controller == 'login'
+    || user()
+  )
+) {
   require_once BASE_DIRECTORY . '/includes/controllers/' . $controller . '.php';
 }
 
@@ -30,5 +39,8 @@ $controller_function = function_exists('controller_' . $controller) ? 'controlle
 
 $controller_results = $controller_function($args);
 
+echo view('layout', $controller_results);
 
-print_r(array('args' => $args, 'controller' => $controller, 'function' => $controller_function));
+//echo base64_encode(uniqid());
+
+//print_r(array('args' => $args, 'controller' => $controller, 'function' => $controller_function, 'controller_results' => $controller_results));

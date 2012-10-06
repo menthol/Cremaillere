@@ -1,5 +1,14 @@
 <?php
 
+function model($table) {
+  static $instances = array();
+
+  if (!isset($instances[$table])) {
+    $instances[$table] = new model($table);
+  }
+  return $instances[$table];
+}
+
 class model {
 
   private $table_name;
