@@ -28,6 +28,9 @@ $status_strings = array(
     <tr>
       <th>Nom</th>
       <th>Invitation</th>
+      <?php if (user()->is_admin): ?>
+        <th>Inviteur</th>
+      <?php endif; ?>
       <th>Actions</th>
     </tr>
   </thead>
@@ -36,6 +39,9 @@ $status_strings = array(
       <tr>
         <td><?php echo $guest->name ?></td>
         <td><?php echo $status_strings[$guest->status]; ?></td>
+        <?php if (user()->is_admin): ?>
+          <th><?php echo model('guest')->load($guest->inviter_id)->name; ?></th>
+        <?php endif; ?>
         <td>
           <?php if (!empty($guest->tel)): ?>
             <?php if ($guest->sms): ?>
