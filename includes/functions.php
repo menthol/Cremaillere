@@ -20,6 +20,13 @@ function url($path, $query = null, $absolute = false, $lang = NULL) {
   return ($absolute ? 'http://' . $_SERVER['HTTP_HOST'] : null) . '/' . $path . ($query ? "?$query" : null);
 }
 
+function surl($path) {
+  $url = url($path, '', true);
+  $url = 'http://l.n--z.net/api?' . http_build_query(array('p' => $url));
+  $url = file_get_contents($url);
+  return $url;
+}
+
 function user() {
   static $user = null;
   if (func_num_args() > 0) {

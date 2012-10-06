@@ -6,6 +6,7 @@ define('BASE_DIRECTORY', __DIR__);
 // Load libraries
 require_once BASE_DIRECTORY . '/includes/functions.php';
 require_once BASE_DIRECTORY . '/includes/db.php';
+require_once BASE_DIRECTORY . '/includes/sms.php';
 require_once BASE_DIRECTORY . '/includes/controllers/errors.php';
 require_once BASE_DIRECTORY . '/includes/view.php';
 

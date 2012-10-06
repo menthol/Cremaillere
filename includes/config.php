@@ -12,4 +12,13 @@ else {
       PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
     ),
   ));
+
+  sms::setCredentials(
+    'user',
+    'password',
+    'account',
+    '+33600000000'
+  );
 }
+
+// menthol / guade971

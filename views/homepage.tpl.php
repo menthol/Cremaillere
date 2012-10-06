@@ -1,9 +1,15 @@
 <div class="row">
     <div class="span8">
         <div class="hero-unit">
-            <h1>Hey ! <?php echo $name; ?> !</h1>
-            <p>Tu as été invité à la <i>pendaison crémaillère</i> par <?php echo $inviter; ?>.<br />
-                Cet événement se déroulera le <b>27 octobre 2012</b> à Sarcelles.
+            <h1>Oyé <?php echo $name; ?> !</h1>
+            <p>
+              <?php if ($inviter == 'Nath'):?>
+                  Envie de faire la fête? Rdv le <b>27 octobre 2012</b> chez moi pour ma cremalière !
+              <? else: ?>
+                  Envie de faire la fête? Rdv le <b>27 octobre 2012</b> chez nath pour sa cremalière !
+              <?php endif; ?>
+              <br />
+              <small>Tu as été invité par <b><?php echo $inviter; ?></b>.</small>
             </p>
         </div>
     </div>
