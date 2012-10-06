@@ -14,10 +14,7 @@ class sms {
   public static function send($to, $msg) {
     try {
       if (self::phoneNumberCleaner($to)) {
-        require 'SOAP/Client.php';
-
-        $WSDL = new SOAP_WSDL('https://www.ovh.com/soapi/soapi-re-1.48.wsdl');
-        $soap = $WSDL->getProxy();
+        $soap = new SoapClient("https://www.ovh.com/soapi/soapi-re-1.48.wsdl");
         $soap->telephonySmsUserSend(self::$user, self::$password, self::$account, self::phoneNumberCleaner(self::$sender), self::phoneNumberCleaner($to), $msg, "2160", "1", "0", "3", "2", "", true);
       }
     }
@@ -42,7 +39,7 @@ class sms {
   }
 
   public static function generateMessage($guest) {
-    if (user()->id == 1) {
+    if ($guest->inviter_id == 1) {
       return 'Oyé ' . $guest->name .
         ', c\'est ' . user()->name .
         '! Envie de faire la fête? Rdv le 27 oct chez moi pour ma cremalière ! tte info sur ' .
