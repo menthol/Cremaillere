@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Crémaillère de Nath</title>
+    <title>The Crémaillère de Nath</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -24,7 +24,8 @@
 </head>
 
 <body>
-
+<a class="visible-desktop" target="_blank" href="https://github.com/menthol/Cremaillere"><img style="position: absolute; top: 40px; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+<a class="hidden-desktop" target="_blank" href="https://github.com/menthol/Cremaillere"><img style="position: absolute; top: 50px; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
@@ -33,15 +34,26 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="#">Crémaillère de Nath</a>
+            <a class="brand" href="<?php echo url('') ?>">The Crémaillère de Nath</a>
             <?php if(user()): ?>
               <div class="nav-collapse collapse">
                   <ul class="nav">
-                      <li><a href="<?php echo url(''); ?>">Mon invitation</a></li>
-                      <li><a href="<?php echo url('my-guest'); ?>">Mes invités</a></li>
-                      <?php if (user()->is_admin): ?>
-                        <li><a href="<?php echo url('all-guest'); ?>">Liste des invités</a></li>
-                      <?php endif; ?>
+                    <?php
+                      $links = array(
+                        '' => 'Mon invitation',
+                        'my_info' => 'Mes informations',
+                        'my_guests' => 'Mes invités',
+                        'all_guests' => 'Liste des invités',
+                        'error404' => '',
+                      );
+                      if (!user()->is_admin) {
+                        unset($links['all_guests']);
+                      }
+                      $current = in_array($controller, array_keys($links)) ? $controller : '';
+                      unset($links['error404']);
+                      foreach($links as $path => $title): ?>
+                        <li<?php echo $path == $current ? ' class="active"' : null; ?>><a href="<?php echo url($path); ?>"><?php echo $title; ?></a></li>
+                      <?php endforeach;?>
                   </ul>
                   <ul class="nav pull-right">
                       <li><a href="<?php echo url('logout'); ?>">Déconnexion</a></li>

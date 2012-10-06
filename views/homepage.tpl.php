@@ -1,25 +1,106 @@
-<!-- Main hero unit for a primary marketing message or call to action -->
-<div class="hero-unit">
-    <h1>Hello, world!</h1>
-    <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-    <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+<div class="row">
+    <div class="span8">
+        <div class="hero-unit">
+            <h1>Hey ! <?php echo $name; ?> !</h1>
+            <p>Tu as été invité à la <i>pendaison crémaillère</i> par <?php echo $inviter; ?>.<br />
+                Cet événement se déroulera le <b>27 octobre 2012</b> à Sarcelles.
+            </p>
+        </div>
+    </div>
+    <div class="span4">
+        <h2>The programme</h2>
+        <h4>14h - 17h</h4> activités jeux et activités enfants.<br />
+        <h4>19h - 20h</h4> accueil des invités, apéritifs.<br />
+        <h4>20h - 21h</h4> buffet.<br />
+        <h4>À partir de 21h</h4> <b><i>Let The Party Begin !!!</i></b>
+    </div>
 </div>
+<div class="row">
+    <div class="span8">
+        <p>
+          <?php
+          $status_strings = array(
+            'Je n\'ai pas encore repondu',
+            'Je viens !',
+            'Je ne sais pas...',
+            'Je ne viens pas.'
+          );
+          ?>
+        <blockquote>
+          <h3>The Réponse</h3>
+          <p>
+            <a href="<?php echo url('actions/guests/1'); ?>" class="btn btn-info">Cool ! je viens !</a>
+            <a href="<?php echo url('actions/guests/2'); ?>" class="btn">Arf, je ne sais pas encore.</a>
+            <a href="<?php echo url('actions/guests/3'); ?>" class="btn btn-warning">Domage, je ne peux pas !</a>
+          </p>
+          <small>Réponse actuelle : <b><span style="color:#000000;"><?php echo $status_strings[$status]; ?></span></b></small>
+        </blockquote>
+        </p>
+    </div>
+    <div class="span4">
+        <h3>The invitation</h3>
+        <p>
+            <a class="btn btn-primary" href="<?php echo url('my_info'); ?>">Je viens accompagné</a>
+            <a class="btn btn-primary" href="<?php echo url('my_guests'); ?>">J'invite mes amis</a>
+        </p>
+    </div>
+</div>
+
+
+<!-- Main hero unit for a primary marketing message or call to action -->
+
 
 <!-- Example row of columns -->
 <div class="row">
     <div class="span4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn" href="#">View details &raquo;</a></p>
+        <h2>The Menu</h2>
+        <p>
+        <h4>Apéritifs</h4>
+        Amuse-bouche (pâté salé, bouché de pain)<br />
+        Samoussa<br />
+        Ailes de poulet frit<br />
+        <h4>Plat de résistance</h4>
+        riz<br />
+        colombo de poulet<br />
+        hachis parmentier<br />
+        <h4>Desserts</h4>
+        Pâtisseries<br />
+        Salade de fruits
+        </p>
     </div>
     <div class="span4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn" href="#">View details &raquo;</a></p>
+        <h2>The adresse</h2>
+        L'évenement ce deroulera a l'adresse suivante : <br />
+        Résidence Daufine<br />
+        17 boulevard Edouard Branly<br />
+        95200 Sarcelles
+        <h4>Transports :</h4>
+        <span style="background-color: #353D92; display: inline-block; padding: 3px 15px; color: #FFFFFF;margin-bottom: 6px;">Garges Sarcelles</span><br />
+        <ul>
+            <li><img src="/img/rer.png" alt="RER" title="RER" /><img src="/img/rer-d.png" alt="D" title="D" /></li>
+        </ul>
+        <span style="background-color: #353D92; display: inline-block; padding: 3px 15px; color: #FFFFFF;margin-bottom: 6px;">Paul Valéry - Édouard Branly</span><br />
+        <small>Depuis Garge Sarcelles RER.</small>
+        <ul>
+            <li>
+                <img src="/img/bus.png" alt="Bus" title="Bus" />
+                <span style="background:#77c695;color:#000;padding:.1em .3em;white-space:nowrap"><b>133</b></span>
+                <span style="background:#bb4b9c;color:#fff;padding:.1em .3em;white-space:nowrap"><b>168</b></span>
+                <span style="background:#f68f4b;color:#000;padding:.1em .3em;white-space:nowrap"><b>269</b></span>
+                <span style="background:#cec92a;color:#000;padding:.1em .3em;white-space:nowrap"><b>368</b></span>
+            </li>
+            <li>
+                <span style="background:#fd3621;color:#ffffff;padding:.1em .3em;white-space:nowrap"><b>Busval d'Oise</b></span>
+                <span style="background:#a6ce38;color:#000000;padding: .1em .3em;white-space:nowrap"><b>95.02</b></span>
+            </li>
+        </ul>
     </div>
     <div class="span4">
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn" href="#">View details &raquo;</a></p>
+        <h2>The Digicode <small><a href="<?php echo $digicode; ?>">Télécharger</a></small></h2>
+        <p>Si possible, essayez de rapporter ce digicode en l’imprimant ou en l’enregistrant sur votre appareil mobile.</p>
+        <p>Ce digicode nous permettra de vérifier plus simplement les invités et éviter ainsi toute intrusion qui nuira au déroulement de l’évènement.</p>
+        <img src="<?php echo $digicode ?>" />
     </div>
 </div>
+
+

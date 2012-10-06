@@ -37,7 +37,14 @@ if (
 
 $controller_function = function_exists('controller_' . $controller) ? 'controller_' . $controller : 'controller_error404';
 
+$controller = $controller_function == 'controller_error404' ? 'error404' : $controller;
+
 $controller_results = $controller_function($args);
+if (!is_array($controller_results)) {
+  $controller_results = controller_error404($args);
+  $controller = 'error404';
+}
+$controller_results['controller'] = $controller;
 
 echo view('layout', $controller_results);
 
