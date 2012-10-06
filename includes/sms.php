@@ -39,15 +39,16 @@ class sms {
   }
 
   public static function generateMessage($guest) {
-    if ($guest->inviter_id == 1) {
+    $inviter = model('guest')->load($guest->inviter_id);
+    if ($inviter->id == 1) {
       return 'Oyé ' . $guest->name .
-        ', c\'est ' . user()->name .
+        ', c\'est ' . $inviter->name .
         '! Envie de faire la fête? Rdv le 27 oct chez moi pour ma cremalière ! tte info sur ' .
         surl('dispatcher/' . $guest->hash);
     }
     else {
       return 'Oyé ' . $guest->name .
-        ', c\'est ' . user()->name .
+        ', c\'est ' . $inviter->name .
         '! Envie de faire la fête? Rdv le 27 oct chez nath pour sa cremalière ! tte info sur ' .
         surl('dispatcher/' . $guest->hash);
     }
