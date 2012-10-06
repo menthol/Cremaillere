@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="span4">
-        <h2>The programme</h2>
+        <h2>The Programme</h2>
         <h4>14h - 17h</h4> activités jeux et activités enfants.<br />
         <h4>19h - 20h</h4> accueil des invités, apéritifs.<br />
         <h4>20h - 21h</h4> buffet.<br />
@@ -75,7 +75,7 @@
         </p>
     </div>
     <div class="span4">
-        <h2>The adresse</h2>
+        <h2>The Adresse</h2>
         L'évenement ce deroulera a l'adresse suivante : <br />
         Résidence Daufine<br />
         17 boulevard Edouard Branly<br />
