@@ -46,8 +46,8 @@
     <div class="span4">
         <h3>The invitation</h3>
         <p>
-            <a class="btn btn-primary" href="<?php echo url('my_info'); ?>">Je viens accompagné</a>
-            <a class="btn btn-primary" href="<?php echo url('my_guests'); ?>">J'invite mes amis</a>
+            <a class="btn btn-primary" href="<?php echo url('add_guest'); ?>">J'invite !</a>
+            <a class="btn btn-primary" href="<?php echo url('my_guests'); ?>">Mes invités</a>
         </p>
     </div>
 </div>
@@ -80,7 +80,7 @@
         Résidence Daufine<br />
         17 boulevard Edouard Branly<br />
         95200 Sarcelles
-        <h4>Transports :</h4>
+        <h4>Transports</h4>
         <span style="background-color: #353D92; display: inline-block; padding: 3px 15px; color: #FFFFFF;margin-bottom: 6px;">Garges Sarcelles</span><br />
         <ul>
             <li><img src="/img/rer.png" alt="RER" title="RER" /><img src="/img/rer-d.png" alt="D" title="D" /></li>
@@ -100,6 +100,12 @@
                 <span style="background:#a6ce38;color:#000000;padding: .1em .3em;white-space:nowrap"><b>95.02</b></span>
             </li>
         </ul>
+        <h4>Contacts</h4>
+        <p>
+            email : nath.noizers@facebook.com <br />
+            tel : 0641686775
+        </p>
+
     </div>
     <div class="span4">
         <h2>The Digicode <small><a href="<?php echo $digicode; ?>">Télécharger</a></small></h2>

@@ -29,7 +29,7 @@ if (
   $controller
   && file_exists(BASE_DIRECTORY . '/includes/controllers/' . $controller . '.php')
   && (
-    $controller == 'login'
+    in_array($controller,array('login', 'dispatcher'))
     || user()
   )
 ) {
@@ -49,6 +49,3 @@ $controller_results['controller'] = $controller;
 
 echo view('layout', $controller_results);
 
-//echo base64_encode(uniqid());
-
-//print_r(array('args' => $args, 'controller' => $controller, 'function' => $controller_function, 'controller_results' => $controller_results));

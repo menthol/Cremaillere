@@ -35,10 +35,17 @@ class model {
         $return = db::fetchRow($sql . implode(' AND ', $where), 'model');
       }
     }
-    else
-    {
+    elseif ($id == '*') {
       if ($multiple) {
-        $return = db::fetchRow("SELECT * FROM " . $this->table_name . " WHERE id=" . db::quote($id), 'model');
+        $return = db::fetchAll("SELECT * FROM " . $this->table_name, 'model');
+      }
+      else {
+        $return = db::fetchRow("SELECT * FROM " . $this->table_name, 'model');
+      }
+    }
+    else {
+      if ($multiple) {
+        $return = db::fetchAll("SELECT * FROM " . $this->table_name . " WHERE id=" . db::quote($id), 'model');
       }
       else {
         $return = db::fetchRow("SELECT * FROM " . $this->table_name . " WHERE id=" . db::quote($id), 'model');
