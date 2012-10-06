@@ -13,6 +13,7 @@ function controller_my_info($args) {
       'more' => $_POST['more'],
     ));
     $user = model('guest')->load($user->id);
+    redirect('');
   }
 
   return array(
