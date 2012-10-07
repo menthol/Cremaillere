@@ -10,6 +10,7 @@
     <label class="control-label" for="inputTel">Tel</label>
     <div class="controls">
       <input type="text" id="inputTel" placeholder="Tel" name="tel" value="<?php echo $user->tel; ?>">
+      <small>Pour recevoir l’invitation par sms</small>
     </div>
   </div>
   <div class="control-group">
