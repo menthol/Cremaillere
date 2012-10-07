@@ -22,7 +22,7 @@ $status_strings = array(
   </tbody>
 </table>
 
-<legend>Mes invitations</legend>
+<legend>Mes invitations <a class="btn btn-primary btn-small" href="<?php echo url('add_guest'); ?>">J'invite !</a></legend>
 <table class="table table-striped">
   <thead>
     <tr>
