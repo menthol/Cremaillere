@@ -30,6 +30,7 @@ $status_strings = array(
       <th>Invitation</th>
       <?php if (user()->is_admin): ?>
         <th>Inviteur</th>
+        <th>Horaires</th>
       <?php endif; ?>
       <th>Actions</th>
     </tr>
@@ -47,21 +48,44 @@ $status_strings = array(
         <td><?php echo $status_strings[$guest->status]; ?></td>
         <?php if (user()->is_admin): ?>
           <td><b><?php echo model('guest')->load($guest->inviter_id)->name; ?></b></td>
+          <?php
+          $time_arrival = array(
+            '-',
+            '14h',
+            '17h',
+            '20h',
+            '21h',
+            '2h',
+          );
+          $time_departure = array(
+            '-',
+            '17h',
+            '19h',
+            '21h',
+            '2h',
+            '8h',
+            '11h',
+          );
+          ?>
+          <td>
+            <small>
+              <?php echo $time_arrival[$guest->arrival]; ?> -
+              <?php echo $time_departure[$guest->departure]; ?>
+            </small>
+          </td>
         <?php endif; ?>
         <td>
           <?php if (!empty($guest->tel)): ?>
             <?php if ($guest->sms): ?>
-              Sms envoyé
+              <span class="btn btn-mini">Sms envoyé</span>
             <?php else: ?>
               <a href="<?php echo url('sendsms/' . $guest->id); ?>" class="btn btn-primary btn-mini">Envoyer le sms</a>
             <?php endif; ?>
-            -
           <?php endif; ?>
           <?php if (user()->is_admin && !empty($guest->more)): ?>
-            <a href="#" class="btn btn-warning btn-mini" rel="popover" data-content="<?php echo $guest->more; ?>" data-original-title="Remarques">Voir les remarques</a>
-             -
+            <a href="" class="btn btn-warning btn-mini" rel="popover" data-content="<?php echo $guest->more; ?>" data-original-title="Remarques">Voir les remarques</a>
           <?php endif; ?>
-            <a href="#" class="btn btn-primary btn-mini" rel="popover" data-content="<?php echo sms::generateMessage($guest); ?>" data-original-title="Message d'invitation">Voir l'invitation</a>
+            <a href="" class="btn btn-primary btn-mini" rel="popover" data-content="<?php echo sms::generateMessage($guest); ?>" data-original-title="Message d'invitation">Voir l'invitation</a>
         </td>
       </tr>
     <?php endforeach; ?>

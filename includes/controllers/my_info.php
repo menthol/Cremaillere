@@ -15,6 +15,9 @@ function controller_my_info($args) {
       'more' => $_POST['more'],
       'arrival' => $_POST['arrival'],
       'departure' => $_POST['departure'],
+      'cnt_adults' => $_POST['cnt_adults'],
+      'cnt_children' => $_POST['cnt_children'],
+      'cnt_babies' => $_POST['cnt_babies'],
     );
 
     if (user()->is_admin) {

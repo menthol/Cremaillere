@@ -77,6 +77,17 @@
       </select>
     </div>
   </div>
+  <div class="control-group">
+    <label class="control-label">Nous sommes</label>
+    <div class="controls">
+      <input type="text" id="inputCntAdults" placeholder="Adultes" name="cnt_adults" value="<?php echo $user->cnt_adults; ?>" class="input-mini">
+      Adultes<br />
+      <input type="text" id="inputCntChildren" placeholder="Enfants" name="cnt_children" value="<?php echo $user->cnt_children; ?>" class="input-mini">
+      Enfants<br />
+      <input type="text" id="inputCntBabies" placeholder="Bébés" name="cnt_babies" value="<?php echo $user->cnt_babies; ?>" class="input-mini">
+      Bébés
+    </div>
+  </div>
   <?php if (user()->is_admin): ?>
   <blockquote>
     <fieldset>
