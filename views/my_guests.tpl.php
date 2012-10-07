@@ -37,7 +37,13 @@ $status_strings = array(
   <tbody>
     <?php foreach ($guests as $guest): ?>
       <tr>
-        <td><?php echo $guest->name ?></td>
+        <td>
+          <?php if (user()->is_admin): ?>
+            <a href="<?php echo url('my_info/' . $guest->id); ?>"><?php echo $guest->name ?></a>
+          <?php else: ?>
+            <?php echo $guest->name ?>
+          <?php endif; ?>
+        </td>
         <td><?php echo $status_strings[$guest->status]; ?></td>
         <?php if (user()->is_admin): ?>
           <td><b><?php echo model('guest')->load($guest->inviter_id)->name; ?></b></td>
