@@ -35,9 +35,9 @@
         <blockquote>
           <h3>The Réponse</h3>
           <p>
-            <a href="<?php echo url('actions/guests/1'); ?>" class="btn btn-info">Cool ! je viens !</a>
-            <a href="<?php echo url('actions/guests/2'); ?>" class="btn">Arf, je ne sais pas encore.</a>
-            <a href="<?php echo url('actions/guests/3'); ?>" class="btn btn-warning">Domage, je ne peux pas !</a>
+            <a href="<?php echo url('actions/guests/1'); ?>" class="btn btn-success">Cool ! je viens !</a>
+            <a href="<?php echo url('actions/guests/2'); ?>" class="btn btn-warning">Arf, je ne sais pas encore.</a>
+            <a href="<?php echo url('actions/guests/3'); ?>" class="btn btn-danger">Domage, je ne peux pas !</a>
           </p>
           <small>Réponse actuelle : <b><span style="color:#000000;"><?php echo $status_strings[$status]; ?></span></b></small>
         </blockquote>
