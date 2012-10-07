@@ -41,11 +41,13 @@ $status_strings = array(
         <td>
           <?php if (user()->is_admin): ?>
             <a href="<?php echo url('my_info/' . $guest->id); ?>"><?php echo $guest->name ?></a>
+            <?php if(in_array($guest->status, array(1, 2))): ?>
             <small>
-              <?php echo $guest->cnt_adults ? $guest->cnt_adults . ' Adultes' : null; ?>
-              <?php echo $guest->cnt_children ? $guest->cnt_children . ' Enfants' : null; ?>
-              <?php echo $guest->cnt_babies ? $guest->cnt_babies . ' Bébés' : null; ?>
+              <?php echo $guest->cnt_adults ? $guest->cnt_adults . ' Adulte<small>(s)</small>' : null; ?>
+              <?php echo $guest->cnt_children ? $guest->cnt_children . ' Enfant<small>(s)</small>' : null; ?>
+              <?php echo $guest->cnt_babies ? $guest->cnt_babies . ' Bébé<small>(s)</small>' : null; ?>
             </small>
+            <?php endif; ?>
           <?php else: ?>
             <?php echo $guest->name ?>
           <?php endif; ?>
@@ -80,20 +82,22 @@ $status_strings = array(
           </td>
         <?php endif; ?>
         <td>
+          <a href="#" class="btn btn-primary btn-mini" rel="popover" data-content="<?php echo sms::generateMessage($guest); ?>" data-original-title="Message d'invitation">Voir l'invitation</a>
           <?php if (!empty($guest->tel)): ?>
             <?php if ($guest->sms): ?>
               <span class="btn btn-mini">Sms envoyé</span>
             <?php else: ?>
               <a href="<?php echo url('sendsms/' . $guest->id); ?>" class="btn btn-primary btn-mini">Envoyer le sms</a>
             <?php endif; ?>
-          <?php endif; ?>
-          <?php if (user()->is_admin && !empty($guest->more)): ?>
-            <a href="#" class="btn btn-warning btn-mini" rel="popover" data-content="<?php echo $guest->more; ?>" data-original-title="Remarques">Voir les remarques</a>
+          <?php else: ?>
+            <span class="btn btn-warning btn-mini">Manque num</span>
           <?php endif; ?>
           <?php if (user()->is_admin && !empty($guest->gift)): ?>
             <a href="#" class="btn btn-success btn-mini" rel="popover" data-content="<?php echo $guest->gift; ?>" data-original-title="Apports">Voir les apports</a>
           <?php endif; ?>
-            <a href="#" class="btn btn-primary btn-mini" rel="popover" data-content="<?php echo sms::generateMessage($guest); ?>" data-original-title="Message d'invitation">Voir l'invitation</a>
+          <?php if (user()->is_admin && !empty($guest->more)): ?>
+            <a href="#" class="btn btn-warning btn-mini" rel="popover" data-content="<?php echo $guest->more; ?>" data-original-title="Remarques">Voir les remarques</a>
+          <?php endif; ?>
         </td>
       </tr>
     <?php endforeach; ?>
