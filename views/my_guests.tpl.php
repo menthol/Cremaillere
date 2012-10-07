@@ -88,7 +88,7 @@ $status_strings = array(
             <?php endif; ?>
           <?php endif; ?>
           <?php if (user()->is_admin && !empty($guest->more)): ?>
-            <a href="" class="btn btn-warning btn-mini" rel="popover" data-content="<?php echo $guest->more; ?>" data-original-title="Remarques">Voir les remarques</a>
+            <a href="#" class="btn btn-warning btn-mini" rel="popover" data-content="<?php echo $guest->more; ?>" data-original-title="Remarques">Voir les remarques</a>
           <?php endif; ?>
           <?php if (user()->is_admin && !empty($guest->gift)): ?>
             <a href="#" class="btn btn-success btn-mini" rel="popover" data-content="<?php echo $guest->gift; ?>" data-original-title="Apports">Voir les apports</a>
