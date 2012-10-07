@@ -79,7 +79,7 @@
         L'évenement se deroulera à l'adresse suivante : <br />
         <blockquote>
           <p>
-            Résidence Daufine<br />
+            Résidence Dauphine<br />
             17 boulevard Edouard Branly<br />
             95200 Sarcelles
           </p>
