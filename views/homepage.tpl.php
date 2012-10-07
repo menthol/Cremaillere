@@ -80,8 +80,7 @@
         Résidence Daufine<br />
         17 boulevard Edouard Branly<br />
         95200 Sarcelles
-        <h4>Transports</h4>
-        <span style="background-color: #353D92; display: inline-block; padding: 3px 15px; color: #FFFFFF;margin-bottom: 6px;">Paris RER</span><br />
+        <h4>Transports depuis Paris</h4>
         <ul>
             <li><img src="/img/rer.png" alt="RER" title="RER" /><img src="/img/rer-d.png" alt="D" title="D" /></li>
         </ul>
