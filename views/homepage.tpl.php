@@ -76,7 +76,7 @@
     </div>
     <div class="span4">
         <h2>The Adresse</h2>
-        L'évenement ce deroulera à l'adresse suivante : <br />
+        L'évenement se deroulera à l'adresse suivante : <br />
         <blockquote>
           <p>
             Résidence Daufine<br />
