@@ -11,7 +11,7 @@ function controller_digicode($args) {
       header('Content-Transfer-Encoding: binary');
       header('Pragma: public');
 
-      QRcode::png(url('dispatcher/' . $quest->hash, null, true), false, 'H', 16, 3);
+      QRcode::png(surl('dispatcher/' . $quest->hash, null, true), false, 'H', 16, 3);
       die();
     }
   }
