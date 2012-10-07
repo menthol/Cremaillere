@@ -14,6 +14,9 @@ function controller_my_info($args) {
       'sms' => $user->tel == $_POST['tel'] ? $user->sms : 0,
     ));
     $user = model('guest')->load($user->id);
+    if (user()->is_admin) {
+      redirect('my_guests');
+    }
     redirect('');
   }
 
