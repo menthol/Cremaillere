@@ -52,7 +52,7 @@ $status_strings = array(
             -
           <?php endif; ?>
           <?php if (user()->is_admin && !empty($guest->more)): ?>
-            <a href="#" class="btn btn-primary btn-mini" rel="popover" data-content="<?php echo $guest->more; ?>" data-original-title="Remarques">Voir les remarques</a>
+            <a href="#" class="btn btn-warning btn-mini" rel="popover" data-content="<?php echo $guest->more; ?>" data-original-title="Remarques">Voir les remarques</a>
              -
           <?php endif; ?>
             <a href="#" class="btn btn-primary btn-mini" rel="popover" data-content="<?php echo sms::generateMessage($guest); ?>" data-original-title="Message d'invitation">Voir l'invitation</a>
