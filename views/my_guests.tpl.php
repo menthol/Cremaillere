@@ -1,9 +1,9 @@
 <?php
 $status_strings = array(
-  'Je n\'ai pas encore repondu',
-  'Je viens !',
-  'Je ne sais pas...',
-  'Je ne viens pas.'
+  '-',
+  'Acceptée',
+  'Reportée',
+  'Refusée'
 );
 ?>
 <legend>Mon inviteur</legend>
@@ -41,6 +41,11 @@ $status_strings = array(
         <td>
           <?php if (user()->is_admin): ?>
             <a href="<?php echo url('my_info/' . $guest->id); ?>"><?php echo $guest->name ?></a>
+            <small>
+              <?php echo $guest->cnt_adults ? $guest->cnt_adults . ' Adultes' : null; ?>
+              <?php echo $guest->cnt_children ? $guest->cnt_children . ' Enfants' : null; ?>
+              <?php echo $guest->cnt_babies ? $guest->cnt_babies . ' Bébés' : null; ?>
+            </small>
           <?php else: ?>
             <?php echo $guest->name ?>
           <?php endif; ?>
@@ -84,6 +89,9 @@ $status_strings = array(
           <?php endif; ?>
           <?php if (user()->is_admin && !empty($guest->more)): ?>
             <a href="" class="btn btn-warning btn-mini" rel="popover" data-content="<?php echo $guest->more; ?>" data-original-title="Remarques">Voir les remarques</a>
+          <?php endif; ?>
+          <?php if (user()->is_admin && !empty($guest->gift)): ?>
+            <a href="" class="btn btn-success btn-mini" rel="popover" data-content="<?php echo $guest->gift; ?>" data-original-title="Apports">Voir les apports</a>
           <?php endif; ?>
             <a href="" class="btn btn-primary btn-mini" rel="popover" data-content="<?php echo sms::generateMessage($guest); ?>" data-original-title="Message d'invitation">Voir l'invitation</a>
         </td>
