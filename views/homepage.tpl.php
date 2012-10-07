@@ -77,9 +77,14 @@
     <div class="span4">
         <h2>The Adresse</h2>
         L'évenement ce deroulera a l'adresse suivante : <br />
-        Résidence Daufine<br />
-        17 boulevard Edouard Branly<br />
-        95200 Sarcelles
+        <blockquote>
+          <p>
+            Résidence Daufine<br />
+            17 boulevard Edouard Branly<br />
+            95200 Sarcelles
+          </p>
+        </blockquote>
+
         <h4>Transports depuis Paris</h4>
         <ul>
             <li><img src="/img/rer.png" alt="RER" title="RER" /><img src="/img/rer-d.png" alt="D" title="D" /></li>
