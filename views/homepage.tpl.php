@@ -81,12 +81,11 @@
         17 boulevard Edouard Branly<br />
         95200 Sarcelles
         <h4>Transports</h4>
-        <span style="background-color: #353D92; display: inline-block; padding: 3px 15px; color: #FFFFFF;margin-bottom: 6px;">Garges Sarcelles</span><br />
+        <span style="background-color: #353D92; display: inline-block; padding: 3px 15px; color: #FFFFFF;margin-bottom: 6px;">Paris RER</span><br />
         <ul>
             <li><img src="/img/rer.png" alt="RER" title="RER" /><img src="/img/rer-d.png" alt="D" title="D" /></li>
         </ul>
-        <span style="background-color: #353D92; display: inline-block; padding: 3px 15px; color: #FFFFFF;margin-bottom: 6px;">Paul Valéry - Édouard Branly</span><br />
-        <small>Depuis Garge Sarcelles RER.</small>
+        <span style="background-color: #353D92; display: inline-block; padding: 3px 15px; color: #FFFFFF;margin-bottom: 6px;">Garges Sarcelles</span><br />
         <ul>
             <li>
                 <img src="/img/bus.png" alt="Bus" title="Bus" />
@@ -100,6 +99,8 @@
                 <span style="background:#a6ce38;color:#000000;padding: .1em .3em;white-space:nowrap"><b>95.02</b></span>
             </li>
         </ul>
+        <span style="background-color: #353D92; display: inline-block; padding: 3px 15px; color: #FFFFFF;margin-bottom: 6px;">Paul Valéry - Édouard Branly</span><br />
+        <img src="/img/Itineraires.png" alt="itineraires" />
         <h4>Contacts</h4>
         <p>
             email : nath.noizers@facebook.com <br />
