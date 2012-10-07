@@ -7,12 +7,26 @@ function controller_my_info($args) {
   }
 
   if (count($_POST)) {
-    model('guest')->update($user->id, array(
+
+    $data = array(
       'name' => $_POST['name'],
       'tel' => $_POST['tel'],
+      'gift' => $_POST['gift'],
       'more' => $_POST['more'],
-      'sms' => $user->tel == $_POST['tel'] ? $user->sms : 0,
-    ));
+      'arrival' => $_POST['arrival'],
+      'departure' => $_POST['departure'],
+    );
+
+    if (user()->is_admin) {
+      $data += array(
+        'inviter_id' => $_POST['inviter_id'],
+        'is_admin' => $_POST['is_admin'],
+        'status' => $_POST['status'],
+        'sms' => $_POST['sms'],
+      );
+    }
+
+    model('guest')->update($user->id, $data);
     $user = model('guest')->load($user->id);
     if (user()->is_admin) {
       redirect('my_guests');

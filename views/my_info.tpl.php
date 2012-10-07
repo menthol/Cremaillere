@@ -9,20 +9,140 @@
   <div class="control-group">
     <label class="control-label" for="inputTel">Tel</label>
     <div class="controls">
-      <input type="text" id="inputTel" placeholder="Tel" name="tel" value="<?php echo $user->tel; ?>" class="input-xxlarge">
+      <input type="text" id="inputTel" placeholder="Tel" name="tel" value="<?php echo $user->tel; ?>" class="input-xxlarge"><br />
       <small>Pour recevoir l’invitation par sms</small>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputGift">J'apporte</label>
+    <div class="controls">
+      <textarea id="inputGift" placeholder="J'apporte" name="gift" rows="3" class="input-xxlarge"><?php echo $user->gift; ?></textarea><br />
+       <small>Ce n'est pas obligatoire d'apporter quelque chose.</small>
     </div>
   </div>
   <div class="control-group">
     <label class="control-label" for="inputRemarques">Remarques</label>
     <div class="controls">
-      <textarea id="inputRemarques" placeholder="Remarques" name="more" rows="10" class="input-xxlarge"><?php echo $user->more; ?></textarea><br />
-       <small>Indiquez si vous venez à plusieurs, vos limitations alimentaires, etc.</small>
+      <textarea id="inputRemarques" placeholder="Remarques" name="more" rows="5" class="input-xxlarge"><?php echo $user->more; ?></textarea><br />
+       <small>Vos limitations alimentaires, vos demandes, etc.</small>
     </div>
   </div>
   <div class="control-group">
+    <label class="control-label" for="inputArrival">J'arrive</label>
     <div class="controls">
-      <button type="submit" class="btn">Sauvegarder</button>
+      <select id="inputArrival" name="arrival">
+        <?php
+          $time_select = array(
+            '-',
+            '14h - 17h : activités jeux et activités enfants.',
+            '17h - 19h : accueil des invités, activités jeux, apéritifs.',
+            '20h - 21h : buffet.',
+            '21h - 2h : The Crémaillère Party.',
+          );
+          foreach($time_select as $delta => $activite) {
+            if ($delta == $user->arrival) {
+              echo '<option value="' . $delta . '" selected="selected">' . $activite . '</option>';
+            }
+            else {
+              echo '<option value="' . $delta . '">' . $activite . '</option>';
+            }
+          }
+        ?>
+      </select>
     </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputDeparture">Je repars</label>
+    <div class="controls">
+      <select id="inputDeparture" name="departure">
+        <?php
+          $time_select = array(
+            '-',
+            '14h - 17h : activités jeux et activités enfants.',
+            '17h - 19h : accueil des invités, activités jeux, apéritifs.',
+            '20h - 21h : buffet.',
+            '21h - 2h : The Crémaillère Party.',
+            '2h - 8h : The After Crémaillère',
+            '8h - 11h : petit déj',
+          );
+          foreach($time_select as $delta => $activite) {
+            if ($delta == $user->departure) {
+              echo '<option value="' . $delta . '" selected="selected">' . $activite . '</option>';
+            }
+            else {
+              echo '<option value="' . $delta . '">' . $activite . '</option>';
+            }
+          }
+        ?>
+      </select>
+    </div>
+  </div>
+  <?php if (user()->is_admin): ?>
+  <blockquote>
+    <fieldset>
+      <legend>Info d'administration</legend>
+        <div class="control-group">
+          <label class="control-label" for="inputIsAdmin">Administrateur</label>
+          <div class="controls">
+            <select id="inputIsAdmin" name="is_admin">
+              <option value="0"<?php echo $user->is_admin ? null : ' selected="selected"'; ?>>Non</option>
+              <option value="1"<?php echo $user->is_admin ? ' selected="selected"' : null; ?>>Oui</option>
+            </select>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputStatus">Statut</label>
+          <div class="controls">
+            <select id="inputStatus" name="status">
+              <?php
+              $status_strings = array(
+                'Je n\'ai pas encore repondu',
+                'Je viens !',
+                'Je ne sais pas...',
+                'Je ne viens pas.'
+              );
+              foreach($status_strings as $delta => $status) {
+                if ($delta == $user->status) {
+                  echo '<option value="' . $delta . '" selected="selected">' . $status . '</option>';
+                }
+                else {
+                  echo '<option value="' . $delta . '">' . $status . '</option>';
+                }
+              }
+              ?>
+            </select>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputInviter">Inviteur</label>
+          <div class="controls">
+            <select id="inputinviter" name="inviter_id">
+              <?php
+              foreach(model('guest')->load('*', true) as $inviter) {
+                if ($inviter->id == $user->inviter_id) {
+                  echo '<option value="' . $inviter->id . '" selected="selected">' . $inviter->name . '</option>';
+                }
+                else {
+                  echo '<option value="' . $inviter->id . '">' . $inviter->name . '</option>';
+                }
+              }
+              ?>
+            </select>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputSms">sms</label>
+          <div class="controls">
+            <select id="inputSms" name="sms">
+              <option value="0"<?php echo $user->sms ? null : ' selected="selected"'; ?>>Non envoyé</option>
+              <option value="1"<?php echo $user->sms ? ' selected="selected"' : null; ?>>Envoyé</option>
+            </select>
+          </div>
+        </div>
+    </fieldset>
+  </blockquote>
+  <?php endif; ?>
+  <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Sauvegarder</button>
   </div>
 </form>

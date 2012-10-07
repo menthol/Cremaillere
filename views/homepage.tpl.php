@@ -16,7 +16,7 @@
     <div class="span4">
         <h2>The Programme</h2>
         <h4>14h - 17h</h4> activités jeux et activités enfants.<br />
-        <h4>19h - 20h</h4> accueil des invités, apéritifs.<br />
+        <h4>17h - 20h</h4> accueil des invités, activités jeux, apéritifs.<br />
         <h4>20h - 21h</h4> buffet.<br />
         <h4>À partir de 21h</h4> <b><i>Let The Party Begin !!!</i></b>
     </div>
