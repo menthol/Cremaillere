@@ -1,5 +1,5 @@
 <?php
-
+session_set_cookie_params(3600 * 24 * 30);
 session_start();
 define('BASE_DIRECTORY', __DIR__);
 
@@ -23,6 +23,10 @@ if (!isset($_GET['q'])) {
 else {
   $args = explode('/', $_GET['q']);
   $controller = array_shift($args);
+}
+
+if ($controller == 'homepage' && isset($args[0])) {
+  user(model('guest')->load(array('hash' => $args[0])));
 }
 
 if (
