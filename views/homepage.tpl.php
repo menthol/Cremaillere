@@ -13,7 +13,7 @@
             </p>
 
           <div class="btn-group">
-            <a href="<?php echo url('actions/guests/1'); ?>" class="btn <?php echo $status == 1 || $status == 0 ? 'btn-success' : 'active'; ?>">Ke viens !</a>
+            <a href="<?php echo url('actions/guests/1'); ?>" class="btn <?php echo $status == 1 || $status == 0 ? 'btn-success' : 'active'; ?>">Je viens !</a>
             <a href="<?php echo url('actions/guests/2'); ?>" class="btn <?php echo $status == 2 || $status == 0 ? 'btn-warning' : 'active'; ?>">Je ne sais pas.</a>
             <a href="<?php echo url('actions/guests/3'); ?>" class="btn <?php echo $status == 3 || $status == 0 ? 'btn-danger' : 'active'; ?>">Je ne peux pas !</a>
           </div><br />
