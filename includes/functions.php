@@ -63,6 +63,7 @@ function user() {
   if (!is_object($user) || $user->id != $_SESSION['user_id']) {
     if ($_SESSION['user_id']) {
       $user = model('guest')->load($_SESSION['user_id']);
+      setcookie('user', $user->hash, strtotime('+30 DAYS'));
     }
     else
     {
