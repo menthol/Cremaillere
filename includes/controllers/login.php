@@ -7,5 +7,8 @@ function controller_login($args) {
       user($user);
     }
   }
+  if(user()->is_admin) {
+    redirect('my_guests');
+  }
   redirect('');
 }
