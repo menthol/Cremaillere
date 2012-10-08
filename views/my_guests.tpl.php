@@ -1,8 +1,8 @@
 <?php
 $status_strings = array(
-  '-',
+  '',
   'Acceptée',
-  'Reportée',
+  'Peut-être',
   'Refusée'
 );
 ?>
@@ -58,25 +58,25 @@ $status_strings = array(
           <?php
           $time_arrival = array(
             '-',
-            '14h',
-            '17h',
-            '20h',
-            '21h',
-            '2h',
+            '14h/17h',
+            '17h/20h',
+            '20h/21h',
+            '21h/2h',
+            '2h/8h',
           );
           $time_departure = array(
             '-',
-            '17h',
-            '19h',
-            '21h',
-            '2h',
-            '8h',
-            '11h',
+            '14h/17h',
+            '17h/19h',
+            '19h/21h',
+            '21h/2h',
+            '2h/8h',
+            '8h/11h',
           );
           ?>
           <td>
             <small>
-              <?php echo $time_arrival[$guest->arrival]; ?> -
+              <?php echo $time_arrival[$guest->arrival]; ?> -->
               <?php echo $time_departure[$guest->departure]; ?>
             </small>
           </td>
