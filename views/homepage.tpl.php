@@ -11,6 +11,17 @@
               <br />
               <small>Tu as été invité par <b><?php echo $inviter; ?></b>.</small>
             </p>
+
+          <div class="btn-group">
+            <a href="<?php echo url('actions/guests/1'); ?>" class="btn <?php echo $status == 1 || $status == 0 ? 'btn-success' : 'active'; ?>">Cool ! je viens !</a>
+            <a href="<?php echo url('actions/guests/2'); ?>" class="btn <?php echo $status == 2 || $status == 0 ? 'btn-warning' : 'active'; ?>">Arf, je ne sais pas encore.</a>
+            <a href="<?php echo url('actions/guests/3'); ?>" class="btn <?php echo $status == 3 || $status == 0 ? 'btn-danger' : 'active'; ?>">Domage, je ne peux pas !</a>
+          </div><br />
+          <div class="btn-group">
+            <a class="btn" href="<?php echo url('add_guest'); ?>">Mes informations</a>
+            <a class="btn" href="<?php echo url('add_guest'); ?>">Créer une invitation</a>
+            <a class="btn" href="<?php echo url('my_guests'); ?>">Mes invités</a>
+          </div>
         </div>
     </div>
     <div class="span4">
@@ -21,39 +32,6 @@
         <h4>À partir de 21h</h4> <b><i>Let The Party Begin !!!</i></b>
     </div>
 </div>
-<div class="row">
-    <div class="span8">
-        <p>
-          <?php
-          $status_strings = array(
-            'Je n\'ai pas encore repondu',
-            'Je viens !',
-            'Je ne sais pas...',
-            'Je ne viens pas.'
-          );
-          ?>
-        <blockquote>
-          <h3>The Réponse</h3>
-          <p>
-            <a href="<?php echo url('actions/guests/1'); ?>" class="btn btn-success">Cool ! je viens !</a>
-            <a href="<?php echo url('actions/guests/2'); ?>" class="btn btn-warning">Arf, je ne sais pas encore.</a>
-            <a href="<?php echo url('actions/guests/3'); ?>" class="btn btn-danger">Domage, je ne peux pas !</a>
-          </p>
-          <small>Réponse actuelle : <b><span style="color:#000000;"><?php echo $status_strings[$status]; ?></span></b></small>
-        </blockquote>
-        </p>
-    </div>
-    <div class="span4">
-        <h3>The invitation</h3>
-        <p>
-            <a class="btn btn-primary" href="<?php echo url('add_guest'); ?>">J'invite !</a>
-            <a class="btn btn-primary" href="<?php echo url('my_guests'); ?>">Mes invités</a>
-        </p>
-    </div>
-</div>
-
-
-<!-- Main hero unit for a primary marketing message or call to action -->
 
 
 <!-- Example row of columns -->
@@ -116,6 +94,7 @@
         <h2>The Digicode <small><a href="<?php echo $digicode; ?>">Télécharger</a></small></h2>
         <p>Si possible, essayez de rapporter ce digicode en l’imprimant ou en l’enregistrant sur votre appareil mobile.</p>
         <p>Si vous avez un smartphone et le sms, vous n'avez pas besoin d'apporter le digicode.</p>
+        <p><b>Vous pouvez scanner ce digicode pour récupérer l'invitation sur votre smartphone.</b></p>
         <p>Ce digicode nous permettra de vérifier plus simplement les invités et éviter ainsi toute intrusion qui nuira au déroulement de l’évènement.</p>
         <img src="<?php echo $digicode ?>" />
     </div>
