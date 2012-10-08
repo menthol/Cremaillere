@@ -31,21 +31,35 @@ function user() {
   static $user = null;
   if (func_num_args() > 0) {
     if (is_numeric(func_get_arg(0))) {
-      $_SESSION['user_id'] = model('guest')->load(func_get_arg(0))->id;
+      $_user = model('guest')->load(func_get_arg(0));
+      $_SESSION['user_id'] = $_user->id;
+      setcookie('user', $_user->hash, strtotime('+30 DAYS'));
     }
     elseif (is_object(func_get_arg(0)) && isset(func_get_arg(0)->id))
     {
-      $_SESSION['user_id'] = model('guest')->load(func_get_arg(0)->id)->id;
+      $_user = model('guest')->load(func_get_arg(0)->id);
+      $_SESSION['user_id'] = $_user->id;
+      setcookie('user', $_user->hash, strtotime('+30 DAYS'));
     }
     else
     {
       $_SESSION['user_id'] = null;
+      $_COOKIE['user'] = uniqid();
     }
   }
   elseif (!isset($_SESSION['user_id']) || empty($_SESSION['user_id']))
   {
+    if (isset($_COOKIE['user'])) {
+      $_user = model('guest')->load(array('hash' => $_COOKIE['user']));
+      if (isset($_user->id)) {
+        return user($_user);
+      }
+    }
+
     $_SESSION['user_id'] = null;
+    $_COOKIE['user'] = uniqid();
   }
+
   if (!is_object($user) || $user->id != $_SESSION['user_id']) {
     if ($_SESSION['user_id']) {
       $user = model('guest')->load($_SESSION['user_id']);
