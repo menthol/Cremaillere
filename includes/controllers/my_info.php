@@ -11,15 +11,20 @@ function controller_my_info($args) {
     $data = array(
       'name' => $_POST['name'],
       'tel' => $_POST['tel'],
-      'gift' => $_POST['gift'],
       'more' => $_POST['more'],
-      'arrival' => $_POST['arrival'],
-      'departure' => $_POST['departure'],
-      'cnt_adults' => $_POST['cnt_adults'],
-      'cnt_children' => $_POST['cnt_children'],
-      'cnt_babies' => $_POST['cnt_babies'],
-      'transport' => $_POST['transport'],
     );
+
+    if (in_array($user->status, array(1, 2)) || user()->is_admin) {
+      $data += array(
+        'gift' => $_POST['gift'],
+        'arrival' => $_POST['arrival'],
+        'departure' => $_POST['departure'],
+        'cnt_adults' => $_POST['cnt_adults'],
+        'cnt_children' => $_POST['cnt_children'],
+        'cnt_babies' => $_POST['cnt_babies'],
+        'transport' => $_POST['transport'],
+      );
+    }
 
     if (user()->is_admin) {
       $data += array(

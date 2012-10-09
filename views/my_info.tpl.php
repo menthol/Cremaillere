@@ -23,13 +23,15 @@
       <small>Pour recevoir l’invitation par sms</small>
     </div>
   </div>
-  <div class="control-group">
-    <label class="control-label" for="inputGift">J'apporte</label>
-    <div class="controls">
-      <textarea id="inputGift" placeholder="J'apporte" name="gift" rows="3" class="input-xxlarge"><?php echo $user->gift; ?></textarea><br />
-       <small>Ce n'est pas obligatoire d'apporter quelque chose.</small>
+  <?php if (in_array($user->status, array(1, 2)) || user()->is_admin): ?>
+    <div class="control-group">
+      <label class="control-label" for="inputGift">J'apporte</label>
+      <div class="controls">
+        <textarea id="inputGift" placeholder="J'apporte" name="gift" rows="3" class="input-xxlarge"><?php echo $user->gift; ?></textarea><br />
+         <small>Ce n'est pas obligatoire d'apporter quelque chose.</small>
+      </div>
     </div>
-  </div>
+  <?php endif; ?>
   <div class="control-group">
     <label class="control-label" for="inputRemarques">Remarques</label>
     <div class="controls">
@@ -37,91 +39,93 @@
        <small>Vos limitations alimentaires, vos demandes, etc.</small>
     </div>
   </div>
-  <div class="control-group">
-    <label class="control-label" for="inputTransport">Mode de transport</label>
-    <div class="controls">
-      <select id="inputTransport" name="transport">
-        <?php
-          $transports = array(
-            '-',
-            'A pieds / Sur place',
-            'En transports en commun',
-            'En voiture',
-            'On me dépose',
-          );
-          foreach($transports as $delta => $transport) {
-            if ($delta == $user->transport) {
-              echo '<option value="' . $delta . '" selected="selected">' . $transport . '</option>';
+  <?php if (in_array($user->status, array(1, 2)) || user()->is_admin): ?>
+    <div class="control-group">
+      <label class="control-label" for="inputTransport">Mode de transport</label>
+      <div class="controls">
+        <select id="inputTransport" name="transport">
+          <?php
+            $transports = array(
+              '-',
+              'A pieds / Sur place',
+              'En transports en commun',
+              'En voiture',
+              'On me dépose',
+            );
+            foreach($transports as $delta => $transport) {
+              if ($delta == $user->transport) {
+                echo '<option value="' . $delta . '" selected="selected">' . $transport . '</option>';
+              }
+              else {
+                echo '<option value="' . $delta . '">' . $transport . '</option>';
+              }
             }
-            else {
-              echo '<option value="' . $delta . '">' . $transport . '</option>';
-            }
-          }
-        ?>
-      </select>
+          ?>
+        </select>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="inputArrival">J'arrive</label>
-    <div class="controls">
-      <select id="inputArrival" name="arrival">
-        <?php
-          $time_select = array(
-            '-',
-            '14h - 17h : activités jeux et activités enfants.',
-            '17h - 19h : accueil des invités, activités jeux, apéritifs.',
-            '20h - 21h : buffet.',
-            '21h - 2h : The Crémaillère Party.',
-          );
-          foreach($time_select as $delta => $activite) {
-            if ($delta == $user->arrival) {
-              echo '<option value="' . $delta . '" selected="selected">' . $activite . '</option>';
+    <div class="control-group">
+      <label class="control-label" for="inputArrival">J'arrive</label>
+      <div class="controls">
+        <select id="inputArrival" name="arrival">
+          <?php
+            $time_select = array(
+              '-',
+              '14h - 17h : activités jeux et activités enfants.',
+              '17h - 19h : accueil des invités, activités jeux, apéritifs.',
+              '20h - 21h : buffet.',
+              '21h - 2h : The Crémaillère Party.',
+            );
+            foreach($time_select as $delta => $activite) {
+              if ($delta == $user->arrival) {
+                echo '<option value="' . $delta . '" selected="selected">' . $activite . '</option>';
+              }
+              else {
+                echo '<option value="' . $delta . '">' . $activite . '</option>';
+              }
             }
-            else {
-              echo '<option value="' . $delta . '">' . $activite . '</option>';
-            }
-          }
-        ?>
-      </select>
+          ?>
+        </select>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="inputDeparture">Je repars</label>
-    <div class="controls">
-      <select id="inputDeparture" name="departure">
-        <?php
-          $time_select = array(
-            '-',
-            '14h - 17h : activités jeux et activités enfants.',
-            '17h - 19h : accueil des invités, activités jeux, apéritifs.',
-            '20h - 21h : buffet.',
-            '21h - 2h : The Crémaillère Party.',
-            '2h - 8h : The After Crémaillère',
-            '8h - 11h : petit déj',
-          );
-          foreach($time_select as $delta => $activite) {
-            if ($delta == $user->departure) {
-              echo '<option value="' . $delta . '" selected="selected">' . $activite . '</option>';
+    <div class="control-group">
+      <label class="control-label" for="inputDeparture">Je repars</label>
+      <div class="controls">
+        <select id="inputDeparture" name="departure">
+          <?php
+            $time_select = array(
+              '-',
+              '14h - 17h : activités jeux et activités enfants.',
+              '17h - 19h : accueil des invités, activités jeux, apéritifs.',
+              '20h - 21h : buffet.',
+              '21h - 2h : The Crémaillère Party.',
+              '2h - 8h : The After Crémaillère',
+              '8h - 11h : petit déj',
+            );
+            foreach($time_select as $delta => $activite) {
+              if ($delta == $user->departure) {
+                echo '<option value="' . $delta . '" selected="selected">' . $activite . '</option>';
+              }
+              else {
+                echo '<option value="' . $delta . '">' . $activite . '</option>';
+              }
             }
-            else {
-              echo '<option value="' . $delta . '">' . $activite . '</option>';
-            }
-          }
-        ?>
-      </select>
+          ?>
+        </select>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label">Nous sommes</label>
-    <div class="controls">
-      <input type="text" id="inputCntAdults" placeholder="Adultes" name="cnt_adults" value="<?php echo $user->cnt_adults; ?>" class="input-mini">
-      Adultes<br />
-      <input type="text" id="inputCntChildren" placeholder="Enfants" name="cnt_children" value="<?php echo $user->cnt_children; ?>" class="input-mini">
-      Enfants<br />
-      <input type="text" id="inputCntBabies" placeholder="Bébés" name="cnt_babies" value="<?php echo $user->cnt_babies; ?>" class="input-mini">
-      Bébés
+    <div class="control-group">
+      <label class="control-label">Nous sommes</label>
+      <div class="controls">
+        <input type="text" id="inputCntAdults" placeholder="Adultes" name="cnt_adults" value="<?php echo $user->cnt_adults; ?>" class="input-mini">
+        Adultes<br />
+        <input type="text" id="inputCntChildren" placeholder="Enfants" name="cnt_children" value="<?php echo $user->cnt_children; ?>" class="input-mini">
+        Enfants<br />
+        <input type="text" id="inputCntBabies" placeholder="Bébés" name="cnt_babies" value="<?php echo $user->cnt_babies; ?>" class="input-mini">
+        Bébés
+      </div>
     </div>
-  </div>
+  <?php endif; ?>
   <?php if (user()->is_admin): ?>
   <blockquote>
     <fieldset>
