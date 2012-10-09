@@ -1,6 +1,16 @@
 <form class="form-horizontal" action="<?php echo url($_GET['q']); ?>" method="post">
   <legend>Mes informations</legend>
   <div class="control-group">
+    <label class="control-label" for="inputNom">Status</label>
+    <div class="controls">
+      <div class="btn-group">
+        <span class="btn <?php echo $user->status == 1 || $user->status == 0 ? 'btn-success' : 'active'; ?>">Je viens !</span>
+        <span class="btn <?php echo $user->status == 2 || $user->status == 0 ? 'btn-warning' : 'active'; ?>">Je ne sais pas.</span>
+        <span class="btn <?php echo $user->status == 3 || $user->status == 0 ? 'btn-danger' : 'active'; ?>">Je ne peux pas !</span>
+      </div>
+    </div>
+  </div>
+  <div class="control-group">
     <label class="control-label" for="inputNom">Nom</label>
     <div class="controls">
       <input type="text" id="inputNom" placeholder="Nom" name="name" value="<?php echo $user->name; ?>" class="input-xxlarge">
@@ -25,6 +35,30 @@
     <div class="controls">
       <textarea id="inputRemarques" placeholder="Remarques" name="more" rows="5" class="input-xxlarge"><?php echo $user->more; ?></textarea><br />
        <small>Vos limitations alimentaires, vos demandes, etc.</small>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputTransport">Mode de transport</label>
+    <div class="controls">
+      <select id="inputTransport" name="transport">
+        <?php
+          $transports = array(
+            '-',
+            'A pieds',
+            'En transports en commun',
+            'En voiture',
+            'On me dépose',
+          );
+          foreach($transports as $delta => $transport) {
+            if ($delta == $user->transport) {
+              echo '<option value="' . $delta . '" selected="selected">' . $transport . '</option>';
+            }
+            else {
+              echo '<option value="' . $delta . '">' . $transport . '</option>';
+            }
+          }
+        ?>
+      </select>
     </div>
   </div>
   <div class="control-group">

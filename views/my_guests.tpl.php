@@ -31,6 +31,7 @@ $status_strings = array(
       <?php if (user()->is_admin): ?>
         <th>Inviteur</th>
         <th>Horaires</th>
+        <th>Transport</th>
       <?php endif; ?>
       <th>Actions</th>
     </tr>
@@ -79,6 +80,18 @@ $status_strings = array(
               <?php echo $time_arrival[$guest->arrival]; ?> -->
               <?php echo $time_departure[$guest->departure]; ?>
             </small>
+          </td>
+          <?php
+          $transports = array(
+            '',
+            'A pieds / sur place',
+            'transports',
+            'en voiture',
+            'Dépose',
+          );
+          ?>
+          <td>
+            <small><?php echo $transports[$guest->transport]; ?></small>
           </td>
         <?php endif; ?>
         <td>
