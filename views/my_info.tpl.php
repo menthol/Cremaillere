@@ -44,7 +44,7 @@
         <?php
           $transports = array(
             '-',
-            'A pieds',
+            'A pieds / Sur place',
             'En transports en commun',
             'En voiture',
             'On me dépose',
