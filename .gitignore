@@ -1,2 +1,4 @@
 includes/config.local.php
 
+
+includes/contrib/phpqrcode/errors.txt

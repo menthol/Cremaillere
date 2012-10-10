@@ -18,7 +18,7 @@
             <a href="<?php echo url('actions/guests/3'); ?>" class="btn <?php echo $status == 3 || $status == 0 ? 'btn-danger' : 'active'; ?>">Je ne peux pas !</a>
           </div><br />
           <div class="btn-group">
-            <a class="btn" href="<?php echo url('add_guest'); ?>">Mes informations</a>
+            <a class="btn" href="<?php echo url('my_info'); ?>">Mes informations</a>
             <a class="btn" href="<?php echo url('add_guest'); ?>">Créer une invitation</a>
             <a class="btn" href="<?php echo url('my_guests'); ?>">Mes invités</a>
           </div>
