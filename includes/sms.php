@@ -43,13 +43,13 @@ class sms {
     if ($inviter->id == 1) {
       return 'Oyé ' . $guest->name .
         ', c\'est ' . $inviter->name .
-        '! Envie de faire la fête? Rdv le 27 oct chez moi pour ma cremalière ! tte info sur ' .
+        '! Envie de faire la fête? Rdv le 27 oct chez moi pour ma cremaillère ! Invitation sur ' .
         surl('dispatcher/' . $guest->hash);
     }
     else {
       return 'Oyé ' . $guest->name .
         ', c\'est ' . $inviter->name .
-        '! Envie de faire la fête? Rdv le 27 oct chez nath pour sa cremalière ! tte info sur ' .
+        '! Envie de faire la fête? Rdv le 27 oct chez nath pour sa cremaillère ! Invitation sur ' .
         surl('dispatcher/' . $guest->hash);
     }
   }

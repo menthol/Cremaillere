@@ -46,7 +46,7 @@
                         'error404' => '',
                       );
                       if (!user()->is_admin) {
-                        unset($links['all_guests']);
+                        unset($links['my_guests']);
                       }
                       $current = in_array($controller, array_keys($links)) ? $controller : '';
                       unset($links['error404']);

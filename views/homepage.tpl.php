@@ -19,8 +19,10 @@
           </div><br />
           <div class="btn-group">
             <a class="btn" href="<?php echo url('my_info'); ?>">Mes informations</a>
-            <a class="btn" href="<?php echo url('add_guest'); ?>">Créer une invitation</a>
-            <a class="btn" href="<?php echo url('my_guests'); ?>">Mes invités</a>
+            <?php if (user()->is_admin): ?>
+              <a class="btn" href="<?php echo url('add_guest'); ?>">Créer une invitation</a>
+              <a class="btn" href="<?php echo url('my_guests'); ?>">Mes invités</a>
+            <?php endif; ?>
           </div>
         </div>
     </div>

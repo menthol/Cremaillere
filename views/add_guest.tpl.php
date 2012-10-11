@@ -7,9 +7,9 @@
     </div>
   </div>
   <div class="control-group">
-    <label class="control-label" for="inputTel">Tel</label>
+    <label class="control-label" for="inputTel">Mobile</label>
     <div class="controls">
-      <input type="text" id="inputTel" placeholder="Tel" name="tel" value="<?php echo $tel; ?>">
+      <input type="text" id="inputTel" placeholder="Mobile" name="tel" value="<?php echo $tel; ?>">
     </div>
   </div>
   <div class="control-group">

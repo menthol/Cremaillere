@@ -17,9 +17,9 @@
     </div>
   </div>
   <div class="control-group">
-    <label class="control-label" for="inputTel">Tel</label>
+    <label class="control-label" for="inputTel">Mobile</label>
     <div class="controls">
-      <input type="text" id="inputTel" placeholder="Tel" name="tel" value="<?php echo $user->tel; ?>" class="input-xxlarge"><br />
+      <input type="text" id="inputTel" placeholder="Mobile" name="tel" value="<?php echo $user->tel; ?>" class="input-xxlarge"><br />
       <small>Pour recevoir l’invitation par sms</small>
     </div>
   </div>
