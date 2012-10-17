@@ -9,7 +9,7 @@ function controller_login($args) {
       }
     }
   }
-  if(user()->is_admin) {
+  if(user() && user()->is_admin) {
     redirect('my_guests');
   }
   redirect('');

@@ -29,43 +29,44 @@ function surl($path) {
 
 function user() {
   static $user = null;
-  if (func_num_args() > 0) {
+
+  if (func_num_args() == 1) {
+    $user = null;
     if (is_numeric(func_get_arg(0))) {
-      $_user = model('guest')->load(func_get_arg(0));
-      $_SESSION['user_id'] = $_user->id;
-      setcookie('user', $_user->hash, strtotime('+30 DAYS'));
+      $user = model('guest')->load(func_get_arg(0));
     }
-    elseif (is_object(func_get_arg(0)) && isset(func_get_arg(0)->id))
-    {
-      $_user = model('guest')->load(func_get_arg(0)->id);
-      $_SESSION['user_id'] = $_user->id;
-      setcookie('user', $_user->hash, strtotime('+30 DAYS'));
+    elseif (is_object(func_get_arg(0)) && isset(func_get_arg(0)->id)) {
+      $user = model('guest')->load(func_get_arg(0)->id);
     }
   }
-  elseif (!isset($_SESSION['user_id']) || empty($_SESSION['user_id']))
-  {
-    if (isset($_COOKIE['user'])) {
-      $_user = model('guest')->load(array('hash' => $_COOKIE['user']));
-      if (isset($_user->id)) {
-        return user($_user);
-      }
+  else {
+    if (!isset($user->id) && isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) {
+      $user = model('guest')->load($_SESSION['user_id']);
+    }
+
+    if (!isset($user->id) && isset($_COOKIE['user']) && !empty($_COOKIE['user'])) {
+      $user = model('guest')->load(array('hash' => $_COOKIE['user']));
     }
   }
 
-  if ((!is_object($user) || $user->id != $_SESSION['user_id']) && func_num_args() == 0) {
-    if ($_SESSION['user_id']) {
-      $user = model('guest')->load($_SESSION['user_id']);
+  if (!isset($user->id)) {
+    $user = null;
+    if (isset($_SESSION['user_id'])) {
+      unset($_SESSION['user_id']);
+    }
+    if (isset($_COOKIE['user']) && $_COOKIE['user'] != 'logout') {
+      setcookie('user', 'logout', strtotime('+1 SEC'));
+    }
+  }
+  else {
+    if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] != $user->id) {
+      $_SESSION['user_id'] = $user->id;
+    }
+    if (!isset($_COOKIE['user']) || $_COOKIE['user'] != $user->hash) {
       setcookie('user', $user->hash, strtotime('+30 DAYS'));
     }
-    else
-    {
-      $user = null;
-    }
   }
-  if ($user == null) {
-    $_SESSION['user_id'] = null;
-    $_COOKIE['user'] = uniqid();
-  }
+
   return $user;
 }
 
