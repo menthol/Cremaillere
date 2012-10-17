@@ -53,4 +53,13 @@ class sms {
         surl('dispatcher/' . $guest->hash);
     }
   }
+
+  public static function generateMessage2($guest) {
+    return 'Oyé ' . $guest->name .
+      'Dans 10 jours c’est la crémaillère de Nath! Dimanche il sera trop tard pour répondre !
+Je viens : ' . surl('dispatcher/' . $guest->hash . '/1') . '
+Je ne viens pas : ' . surl('dispatcher/' . $guest->hash . '/3') . '
+Ou par sms/tel au 0641686775.
+Informations :' . surl('dispatcher/' . $guest->hash);
+  }
 }

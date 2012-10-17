@@ -100,7 +100,12 @@ $status_strings = array(
             <?php if ($guest->sms): ?>
               <span class="btn btn-mini">Sms envoyé</span>
             <?php else: ?>
-              <a href="<?php echo url('sendsms/' . $guest->id); ?>" class="btn btn-primary btn-mini">Envoyer le sms</a>
+              <a href="<?php echo url('sendsms/' . $guest->id . '/1'); ?>" class="btn btn-primary btn-mini">Envoyer le sms</a>
+            <?php endif; ?>
+          <?php if ($guest->sms2): ?>
+              <span class="btn btn-mini">Rappel envoyé</span>
+            <?php else: ?>
+              <a href="<?php echo url('sendsms/' . $guest->id . '/2'); ?>" class="btn btn-primary btn-mini">Envoyer le rappel</a>
             <?php endif; ?>
           <?php else: ?>
             <span class="btn btn-warning btn-mini">Manque num</span>

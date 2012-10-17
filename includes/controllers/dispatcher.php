@@ -8,5 +8,5 @@ function controller_dispatcher($args) {
     }
     redirect('my_guests');
   }
-  redirect('login/' . $args[0]);
+  redirect('login/' . implode('/', $args));
 }
