@@ -41,11 +41,6 @@ function user() {
       $_SESSION['user_id'] = $_user->id;
       setcookie('user', $_user->hash, strtotime('+30 DAYS'));
     }
-    else
-    {
-      $_SESSION['user_id'] = null;
-      $_COOKIE['user'] = uniqid();
-    }
   }
   elseif (!isset($_SESSION['user_id']) || empty($_SESSION['user_id']))
   {
@@ -55,12 +50,9 @@ function user() {
         return user($_user);
       }
     }
-
-    $_SESSION['user_id'] = null;
-    $_COOKIE['user'] = uniqid();
   }
 
-  if (!is_object($user) || $user->id != $_SESSION['user_id']) {
+  if ((!is_object($user) || $user->id != $_SESSION['user_id']) && func_num_args() == 0) {
     if ($_SESSION['user_id']) {
       $user = model('guest')->load($_SESSION['user_id']);
       setcookie('user', $user->hash, strtotime('+30 DAYS'));
@@ -69,6 +61,10 @@ function user() {
     {
       $user = null;
     }
+  }
+  if ($user == null) {
+    $_SESSION['user_id'] = null;
+    $_COOKIE['user'] = uniqid();
   }
   return $user;
 }
