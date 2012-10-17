@@ -1,7 +1,7 @@
 <?php
 
 function controller_add_guest($args) {
-
+  if (!user() || !user()->is_admin) return null;
   if (count($_POST)) {
     model('guest')->insert(array(
       'name' => $_POST['name'],

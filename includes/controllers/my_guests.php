@@ -1,6 +1,7 @@
 <?php
 
 function controller_my_guests($args) {
+  if (!user() || !user()->is_admin) return null;
   $inviter = model('guest')->load(user()->inviter_id);
 
   if (user()->is_admin) {

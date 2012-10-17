@@ -1,6 +1,7 @@
 <?php
 
 function controller_sendsms($args) {
+  if (!user() || !user()->is_admin) return null;
   if (isset($args[0]) && isset($args[1])) {
     switch($args[1]) {
       case 1:
