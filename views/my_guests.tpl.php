@@ -102,15 +102,14 @@ $status_strings = array(
             <?php else: ?>
               <a href="<?php echo url('sendsms/' . $guest->id . '/1'); ?>" class="btn btn-primary btn-mini">Envoyer le sms</a>
             <?php endif; ?>
-          <?php if ($guest->sms2): ?>
+            <?php if ($guest->sms2): ?>
               <span class="btn btn-mini">Rappel envoyé</span>
             <?php else: ?>
-            <?php if ($guest->status != 0): ?>
-              <span class="btn btn-mini">Déjà repondu</span>
+              <?php if ($guest->status != 0): ?>
+                <span class="btn btn-mini">Déjà repondu</span>
               <?php else: ?>
-              <a href="<?php echo url('sendsms/' . $guest->id . '/2'); ?>" class="btn btn-primary btn-mini">Envoyer le rappel</a>
+                <a href="<?php echo url('sendsms/' . $guest->id . '/2'); ?>" class="btn btn-primary btn-mini">Envoyer le rappel</a>
               <?php endif; ?>
-            <?php else: ?>
             <?php endif; ?>
           <?php else: ?>
             <span class="btn btn-warning btn-mini">Manque num</span>
